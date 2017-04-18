@@ -1,12 +1,12 @@
 # Sentinel Granule Service
 
-This is a web application that returns the UTM granules (for sentinel 2) given a point, line or polygon (defined in WKT). It performs a simple intersection in PostGIS.
+This is a web application, which returns the name of the UTM granules for sentinel 2 given a point, line or polygon. The input is a geometry defined in WKT (well-known-text). It performs a simple intersection in PostGIS.
 
 Be careful as this web application is experimental.
 
 # Installation
 
-Create a spatial database and insert the table in the *.sql file.
+Create a spatial database in PostgreSQL and insert the table, which is defined in the *.sql file.
 
 Copy all *.py and config files to your web server. Note: You need python 2 and a web server.
 
@@ -16,7 +16,7 @@ An emty regex setting will be treated as "no check".
 
 # Usage
 
-Call is something like this:
+Once you have set up the web application, you can call it, e.g., using your browser with something like this:
 
 ````
 https://localhost/cgi-bin/S2-granules.py?wkt='POINT (10 10)'
@@ -24,7 +24,7 @@ https://localhost/cgi-bin/S2-granules.py?wkt=POINT (10 10)
 https://localhost/cgi-bin/S2-granules.py?wkt="POINT (10 10)"
 ````
 
-it also works with lines and polygons:
+It also works with lines and polygons:
 
 ````
 https://localhost/cgi-bin/S2-granules.py?wkt='LINESTRING (10 10, 20 20)'
@@ -32,3 +32,9 @@ https://localhost/cgi-bin/S2-granules.py?wkt='POLYGON ((35 10, 45 45, 15 40, 10 
 
 ````
 
+It will be extended with multi-geometries soon.
+
+# Contact
+
+Author: Martin Sudmanns
+Web: http://uni-salzburg.at/zgis/sudmanns
