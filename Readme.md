@@ -37,4 +37,6 @@ It will be extended with multi-geometries soon.
 # Contact
 
 Author: Martin Sudmanns
+
 Web: http://uni-salzburg.at/zgis/sudmanns
+
