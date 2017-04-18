@@ -185,12 +185,13 @@ class IO:
                     passed.append(False)
                     self.output("Invalid WKT: " + str(candidate["wkt"].value), "FAIL", False)
             except:
-                self.output("Invalid regex pattern", "FAIL", True)
+				passed.append(False)
+                self.output("Invalid regex pattern", "FAIL", False)
         
         #
         # Check whether the tests have been accomplished successfully
         #
-        if passed.count(False) == 0:
+        if passed.count(True) == checks:
             return True
         else:
             self.output("Something went wrong: " + str(passed.count(False)) + " of " + str(checks) + " checks failed.", "FAIL", True)
@@ -260,7 +261,9 @@ class DB:
         dbconn.close()
         
         #
-        # return granules
+        # return granules.
+        # If it is empty, return an empty list. If it is not empty,
+        # reformat it into a un-nested array.
         #
         if len(granules) == 0:
             return []

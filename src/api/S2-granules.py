@@ -45,13 +45,13 @@ if __name__ == "__main__":
     config = cfg.getConfig()
     
     #
-    # Read the input data at first since there might be a lot of errors. Expensive
-    # parts of the program (read configuration, database) can be avoided.
+    # Read the input data and perform initial checks
     #
     wkt_string = io.input(cgi.FieldStorage())
 
     #
-    # Execute the database query with the wkt string
+    # Execute the database query with the wkt string. We should be more 
+    # or less safe now.
     #
     try:
         utm_tiles = db.executeQuery(wkt_string)
