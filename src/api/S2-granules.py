@@ -25,14 +25,15 @@
 # along with Sentinel-Granules-Service.  If not, see <http://www.gnu.org/licenses/>.
 ########################################################################
 
+import cgi
+import sys
+import json
+import re
+
 from io import IO
 from io import DB
 from io import Config
 
-import cgi
-import sys
-import json
-    
 if __name__ == "__main__":
     
     io = IO()
@@ -48,6 +49,11 @@ if __name__ == "__main__":
     # Read the input data and perform initial checks
     #
     wkt_string = io.input(cgi.FieldStorage())
+    
+	#
+	# Replace leading or trailing quotes from the request
+	#
+	wkt_string = re.sub(r'^("|\')|("|\')$', '', wkt_string)        
 
     #
     # Execute the database query with the wkt string. We should be more 
