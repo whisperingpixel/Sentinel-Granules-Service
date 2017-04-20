@@ -50,10 +50,10 @@ if __name__ == "__main__":
     #
     wkt_string = io.input(cgi.FieldStorage())
     
-	#
-	# Replace leading or trailing quotes from the request
-	#
-	wkt_string = re.sub(r'^("|\')|("|\')$', '', wkt_string)        
+    #
+    # Replace leading or trailing quotes from the request
+    #
+    wkt_string = re.sub(r'^("|\')|("|\')$', '', wkt_string)        
 
     #
     # Execute the database query with the wkt string. We should be more 
